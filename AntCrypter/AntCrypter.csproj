@@ -1,0 +1,172 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6C6DF38A-1626-4213-81EF-DA00666C3A54}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>AntCrypter</RootNamespace>
+    <AssemblyName>AntCrypter</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>DataAndResources\AntCrypterIcon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Animations\MouseClickAnimations.cs" />
+    <Compile Include="Animations\StartupAnimations.cs" />
+    <Compile Include="Animations\VisibilityAnimations.cs" />
+    <Compile Include="ApplicationWorkers\CustomIconWorker.cs" />
+    <Compile Include="ApplicationWorkers\InstallerWorker.cs" />
+    <Compile Include="ApplicationWorkers\PayloadWorker.cs" />
+    <Compile Include="ApplicationWorkers\URLOnStartupWorker.cs" />
+    <Compile Include="DataAndResources\KeysAndData.cs" />
+    <Compile Include="WindowControllers\MainWindowController.cs" />
+    <Compile Include="Windows\InstallerWindow.xaml.cs">
+      <DependentUpon>InstallerWindow.xaml</DependentUpon>
+    </Compile>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="Animations\MouseHoverAnimations.cs" />
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ApplicationWorkers\DecryptorWorker.cs" />
+    <Compile Include="ApplicationWorkers\EncrypterWorker.cs" />
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="Windows\InstallerWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Animations\ImageChangeAnimations.cs" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="DataAndResources\Decryption.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="DataAndResources\Encryption.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="DataAndResources\Heavy.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="DataAndResources\Light.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="DataAndResources\AntCrypterIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="DataAndResources\AntCrypterIcon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="DataAndResources\PayloadMode.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="DataAndResources\InstallerMode.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="DataAndResources\InstallerModeReady.png" />
+    <Resource Include="DataAndResources\PayloadModeReady.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="DataAndResources\SetCustomIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="DataAndResources\OpenURL.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="DataAndResources\RunOnStartupReady.png" />
+    <Content Include="DataAndResources\WarioOhBoy.wav" />
+    <None Include="DataAndResources\WarioFalling.wav" />
+    <Resource Include="DataAndResources\RunOnStartup.png" />
+    <Resource Include="DataAndResources\HelpIcon.png" />
+    <Resource Include="DataAndResources\InstallerWindowBackground.png" />
+    <Resource Include="DataAndResources\SetCustomIconReady.png" />
+    <Resource Include="DataAndResources\Checkmark.png" />
+    <Resource Include="DataAndResources\OpenURLReady.png" />
+    <Resource Include="DataAndResources\AntCrypterBackground.png" />
+    <Content Include="DataAndResources\BlackCover.png" />
+    <Resource Include="DataAndResources\Intro.wav" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

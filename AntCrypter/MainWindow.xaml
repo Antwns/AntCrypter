@@ -1,0 +1,71 @@
+﻿<Window x:Name="AntCrypterMainWindow" x:Class="AntCrypter.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AntCrypter"
+        mc:Ignorable="d"
+        Title="AntCrypter" Height="450" Width="800" Icon="DataAndResources/AntCrypterIcon.png" Loaded="AntCrypterMainWindow_Loaded" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Closed="AntCrypterMainWindow_Closed" x:FieldModifier="public">
+    <Window.Background>
+        <ImageBrush ImageSource="DataAndResources/AntCrypterBackground.png" Stretch="UniformToFill"/>
+    </Window.Background>
+    <Grid x:Name="MainWindowGrid" x:FieldModifier="public">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50*"/>
+            <RowDefinition Height="50*"/>
+            <RowDefinition Height="50*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="5*"/>
+            <ColumnDefinition Width="50*"/>
+            <ColumnDefinition Width="5*"/>
+        </Grid.ColumnDefinitions>
+
+        <Label x:Name="MainWindowLabel" Content="Use the buttons below to start encrypting or decryping" Grid.Column="1" HorizontalAlignment="Center" Margin="0,60,0,0" VerticalAlignment="Center" FontSize="24" Background="{x:Null}" Foreground="#FF00D1CD" FontWeight="Bold">
+            <Label.Effect>
+                <DropShadowEffect BlurRadius="3" Direction="300" ShadowDepth="4"/>
+            </Label.Effect>
+        </Label>
+        <Image x:Name="DecryptButton" ToolTip="Decrypt a file." x:FieldModifier="public" Grid.Column="1" HorizontalAlignment="Right" Height="80" Margin="0,0,50,25" Grid.Row="2" VerticalAlignment="Bottom" Width="80" MouseLeftButtonDown="DecryptButton_MouseLeftButtonDown" Source="DataAndResources/Decryption.png" MouseEnter="DecryptButton_MouseEnter"/>
+        <Image x:Name="EncryptButton" ToolTip="Encrypt a file." x:FieldModifier="public" Grid.Column="1" HorizontalAlignment="Left" Height="80" Margin="50,0,0,25" Grid.Row="2" VerticalAlignment="Bottom" Width="80" MouseLeftButtonDown="EncryptButton_MouseLeftButtonDown" Source="DataAndResources/Encryption.png" MouseEnter="EncryptButton_MouseEnter"/>
+        <TextBox x:Name="EKeyTextBox" Grid.Column="1" HorizontalAlignment="Center" Height="55" Margin="1,3,2,4" Grid.Row="2" TextWrapping="Wrap" Text="MyKey123" VerticalAlignment="Center" Width="305" Background="{x:Null}" MaxLines="1" MaxLength="8" FontSize="30" FontWeight="Bold" TextAlignment="Center" BorderThickness="2" BorderBrush="Black" Foreground="White" Padding="0,5,0,0" Loaded="EKeyTextBox_Loaded">
+            <TextBox.Template>
+                <ControlTemplate TargetType="{x:Type TextBoxBase}">
+                    <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
+                        <ScrollViewer x:Name="PART_ContentHost" Focusable="False" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" TargetName="border" Value="0.56"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </TextBox.Template>
+            <TextBox.Effect>
+                <DropShadowEffect BlurRadius="3" Direction="300"/>
+            </TextBox.Effect>
+            <TextBox.SelectionBrush>
+                <LinearGradientBrush EndPoint="1,1" StartPoint="0.1,0" SpreadMethod="Reflect">
+                    <GradientStop Color="#FFFF1515" Offset="0"/>
+                    <GradientStop Color="#FFFFE500" Offset="1"/>
+                    <GradientStop Color="#FF0A4BFF" Offset="0.663"/>
+                    <GradientStop Color="#FF06FF12" Offset="0.347"/>
+                </LinearGradientBrush>
+            </TextBox.SelectionBrush>
+            <TextBox.Style>
+                <Style />
+            </TextBox.Style>
+        </TextBox>
+        <Label x:Name="MoreOptionsLabel" Content="More options" Grid.Column="1" HorizontalAlignment="Center" Height="40" Margin="0" Grid.Row="1" VerticalAlignment="Top" Width="190" FontSize="20" FontWeight="Bold" Foreground="White" Background="{x:Null}" MouseLeftButtonDown="MoreOptionsLabel_MouseLeftButtonDown" TextOptions.TextHintingMode="Animated" Padding="36,5,0,0">
+            <Label.Effect>
+                <DropShadowEffect BlurRadius="2" Direction="300" ShadowDepth="3"/>
+            </Label.Effect>
+        </Label>
+        <Image x:Name="PayloadModeButton" x:FieldModifier="public" HorizontalAlignment="Left" Height="0" Margin="182,0,0,0" Grid.Row="1" VerticalAlignment="Bottom" Width="0" Visibility="Visible" MouseEnter="PayloadModeButton_MouseEnter" Grid.Column="1" Source="DataAndResources/PayloadMode.png" Grid.IsSharedSizeScope="True" ToolTip="Disabled: Payload mode." MouseLeftButtonDown="PayloadModeButton_MouseLeftButtonDown"/>
+        <Image x:Name="InstallerModeButton" x:FieldModifier="public" HorizontalAlignment="Left" Height="0" Margin="262,0,0,0" Grid.Row="1" VerticalAlignment="Bottom" Width="0" Visibility="Visible" MouseEnter="InstallerModeButton_MouseEnter" Grid.Column="1" Source="DataAndResources/InstallerMode.png" ToolTip="Disabled: Installer mode." MouseLeftButtonDown="InstallerModeButton_MouseLeftButtonDown"/>
+        <Image x:Name="SetCustomIconButton" x:FieldModifier="public" HorizontalAlignment="Left" Height="0" Width="0" Margin="342,0,0,0" Grid.Row="1" VerticalAlignment="Bottom" Visibility="Visible" MouseEnter="SetCustomIconButton_MouseEnter" Grid.Column="1" Source="DataAndResources/SetCustomIcon.png" ToolTip="Disabled: Custom icon utility." MouseLeftButtonDown="SetCustomIconButton_MouseLeftButtonDown"/>
+        <Image x:Name="OpenURLOnStartupButton" x:FieldModifier="public" HorizontalAlignment="Left" Height="0" Width="0" Margin="422,0,0,0" Grid.Row="1" VerticalAlignment="Bottom" Visibility="Visible" MouseEnter="OpenURLOnStartupButton_MouseEnter" Grid.Column="1" Source="DataAndResources/OpenURL.png" ToolTip="Disabled: Open URL on application startup." MouseLeftButtonDown="OpenURLOnStartupButton_MouseLeftButtonDown"/>
+        <Rectangle x:Name="BlockingImage" HorizontalAlignment="Left" Height="420" VerticalAlignment="Top" Width="795" Grid.ColumnSpan="3" Fill="Black" Grid.RowSpan="3" MouseLeftButtonDown="BlockingImage_MouseLeftButtonDown" Visibility="Hidden"/>
+
+    </Grid>
+</Window>
