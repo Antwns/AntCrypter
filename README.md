@@ -16,5 +16,9 @@ Q:Can you remove the console and stop it from popping up?
 
 A:No.
 
+Q:I get "lines exceeded" error in the compiler, what's going on?
+
+A:You're trying to encrypt a very big application. Maximum size should be around 3k KB.
+
 
 (More Q&A to be added later)
